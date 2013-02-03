@@ -13,7 +13,6 @@ green 8
 Green 2
 Blue 1
 YeLLoW 9
-yellow 9
 Red 5
 Yellow 6
 WILD NoDraw
