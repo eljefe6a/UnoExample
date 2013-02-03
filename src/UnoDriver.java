@@ -22,23 +22,23 @@ public class UnoDriver extends Configured implements Tool {
 		}
 
 		Job job = new Job(getConf());
-	    job.setJarByClass(UnoDriver.class);
-	    job.setJobName(this.getClass().getName());
+		job.setJarByClass(UnoDriver.class);
+		job.setJobName(this.getClass().getName());
 
-	    FileInputFormat.setInputPaths(job, new Path(input));
-	    FileOutputFormat.setOutputPath(job, new Path(output));
+		FileInputFormat.setInputPaths(job, new Path(input));
+		FileOutputFormat.setOutputPath(job, new Path(output));
 
-	    job.setMapperClass(UnoMapper.class);
-	    job.setReducerClass(UnoTotalReducer.class);
+		job.setMapperClass(UnoMapper.class);
+		job.setReducerClass(UnoTotalReducer.class);
 
-	    job.setMapOutputKeyClass(Text.class);
-	    job.setMapOutputValueClass(IntWritable.class);
-	    
-	    job.setOutputKeyClass(Text.class);
-	    job.setOutputValueClass(IntWritable.class);
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(IntWritable.class);
 
-	    boolean success = job.waitForCompletion(true);
-	    return success ? 0 : 1;
+		job.setOutputKeyClass(Text.class);
+		job.setOutputValueClass(IntWritable.class);
+
+		boolean success = job.waitForCompletion(true);
+		return success ? 0 : 1;
 	}
 
 	public static void main(String[] args) throws Exception {
