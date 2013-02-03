@@ -5,20 +5,14 @@ import java.util.regex.Pattern;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapred.MapReduceBase;
-import org.apache.hadoop.mapred.Mapper;
-import org.apache.hadoop.mapred.OutputCollector;
-import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapreduce.Mapper;
 
-public class UnoMapper extends MapReduceBase implements
-		Mapper<LongWritable, Text, Text, IntWritable> {
+public class UnoMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
 	private static Pattern inputPattern = Pattern.compile("(.*) (\\d*)");
 	
 	@Override
-	public void map(LongWritable key, Text value,
-			OutputCollector<Text, IntWritable> output, Reporter reporter)
-			throws IOException {
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		String inputLine = value.toString();
 		
 		Matcher inputMatch = inputPattern.matcher(inputLine);
@@ -29,7 +23,7 @@ public class UnoMapper extends MapReduceBase implements
 			String cardColor = inputMatch.group(1).toLowerCase();
 			int cardValue = Integer.parseInt(inputMatch.group(2));
 			
-			output.collect(new Text(cardColor), new IntWritable(cardValue));
+			context.write(new Text(cardColor), new IntWritable(cardValue));
 		}
 	}
 }
