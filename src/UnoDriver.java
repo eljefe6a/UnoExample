@@ -33,7 +33,7 @@ public class UnoDriver extends Configured implements Tool {
 		job.setReducerClass(UnoTotalReducer.class);
 
 		job.setMapOutputKeyClass(Text.class);
-		job.setMapOutputValueClass(DoubleWritable.class);
+		job.setMapOutputValueClass(IntWritable.class);
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
