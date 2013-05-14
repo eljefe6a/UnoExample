@@ -1,11 +1,11 @@
 #!/usr/bin/env perl
 
-# Initialize variable to keep track of sums for a color
+# Initialize variable to keep track of sums for a suit
 my $cardsum = 0;
 
-# Start off with cardcolor as undef
+# Start off with cardsuit as undef
 # We have to keep track of the key ourselves
-my $cardcolor = undef;
+my $cardsuit = undef;
 
 # Iterate through every line passed in to stdin
 # Will be key followed by tab then value
@@ -21,19 +21,19 @@ while (<>) {
 	}
 	
 	# Set the variables up to make them easier to read
-	$newcardcolor = @parts[0];
+	$newcardsuit = @parts[0];
 	$cardnum = @parts[1];
 	
-	if (!defined($cardcolor)) {
-		# cardcolor not set yet, set it because we keep track of the key
-		$cardcolor = $newcardcolor;
+	if (!defined($cardsuit)) {
+		# cardsuit not set yet, set it because we keep track of the key
+		$cardsuit = $newcardsuit;
 	}
 	
-	if ($cardcolor ne $newcardcolor) {
-		# New cardcolor came in, output the previous color and sum
-		print $cardcolor . "\t" . $cardsum . "\n";
+	if ($cardsuit ne $newcardsuit) {
+		# New cardsuit came in, output the previous suit and sum
+		print $cardsuit . "\t" . $cardsum . "\n";
 		# Set the new key because we keep track of the key
-		$cardcolor = $newcardcolor;
+		$cardsuit = $newcardsuit;
 		# Set the sum to 0 because there is a new key
 		$cardsum = 0;
 	}
@@ -42,7 +42,7 @@ while (<>) {
 	$cardsum = $cardsum + $cardnum;
 }
 
-if (defined($cardcolor)) {
-	# If a cardcolor was found, output the last key's data before exit
-	print $cardcolor . "\t" . $cardsum . "\n";
+if (defined($cardsuit)) {
+	# If a cardsuit was found, output the last key's data before exit
+	print $cardsuit . "\t" . $cardsum . "\n";
 }

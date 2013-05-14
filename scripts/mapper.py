@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
 # To run in Hadoop cluster
-# hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming*.jar -input unoinput.txt -output output -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py
+# hadoop jar /usr/lib/hadoop-0.20-mapreduce/contrib/streaming/hadoop-streaming*.jar -input cardinput.txt -output output -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py
 
 # To run without Hadoop for debugging purposes
-# hadoop fs -cat unoinput.txt | ./mapper.py | sort | ./reducer.py
+# hadoop fs -cat cardinput.txt | ./mapper.py | sort | ./reducer.py
 import re
 import sys
 

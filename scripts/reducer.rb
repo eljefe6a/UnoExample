@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
-# Initialize variable to keep track of sums for a color
+# Initialize variable to keep track of sums for a suit
 cardsum = 0
 
-# Start off with cardcolor as nil
+# Start off with cardsuit as nil
 # We have to keep track of the key ourselves
-cardcolor = nil
+cardsuit = nil
 
 # Iterate through every line passed in to stdin
 # Will be key followed by tab then value
@@ -20,19 +20,19 @@ ARGF.each do |line|
 	end
 	
 	# Set the variables up to make them easier to read
-	newcardcolor=parts[0]
+	newcardsuit=parts[0]
 	cardnum=Integer(parts[1])
 		
-	if cardcolor.nil?
-		# cardcolor not set yet, set it because we keep track of the key
-		cardcolor = newcardcolor
+	if cardsuit.nil?
+		# cardsuit not set yet, set it because we keep track of the key
+		cardsuit = newcardsuit
 	end
 
-	if cardcolor != newcardcolor
-		# New cardcolor came in, output the previous color and sum
-		puts cardcolor + "\t" + cardsum.to_s()
+	if cardsuit != newcardsuit
+		# New cardsuit came in, output the previous suit and sum
+		puts cardsuit + "\t" + cardsum.to_s()
 		# Set the new key because we keep track of the key
-		cardcolor = newcardcolor
+		cardsuit = newcardsuit
 		# Set the sum to 0 because there is a new key
 		cardsum = 0
 	end
@@ -41,7 +41,7 @@ ARGF.each do |line|
 	cardsum = cardsum + cardnum
 end
 
-if cardcolor.nil? == false:
-	# If a cardcolor was found, output the last key's data before exit
-	puts cardcolor + "\t" + cardsum.to_s()
+if cardsuit.nil? == false:
+	# If a cardsuit was found, output the last key's data before exit
+	puts cardsuit + "\t" + cardsum.to_s()
 end
