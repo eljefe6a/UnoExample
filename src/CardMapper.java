@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class UnoMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+public class CardMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
 	private static Pattern inputPattern = Pattern.compile("(.*) (\\d*)");
 

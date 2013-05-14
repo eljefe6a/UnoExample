@@ -4,7 +4,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class UnoTotalReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+public class CardTotalReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 
 	@Override
 	public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException,

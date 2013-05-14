@@ -8,7 +8,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class UnoDriver extends Configured implements Tool {
+public class CardDriver extends Configured implements Tool {
 
 	@Override
 	public int run(String[] args) throws Exception {
@@ -22,14 +22,14 @@ public class UnoDriver extends Configured implements Tool {
 		}
 
 		Job job = new Job(getConf());
-		job.setJarByClass(UnoDriver.class);
+		job.setJarByClass(CardDriver.class);
 		job.setJobName(this.getClass().getName());
 
 		FileInputFormat.setInputPaths(job, new Path(input));
 		FileOutputFormat.setOutputPath(job, new Path(output));
 
-		job.setMapperClass(UnoMapper.class);
-		job.setReducerClass(UnoTotalReducer.class);
+		job.setMapperClass(CardMapper.class);
+		job.setReducerClass(CardTotalReducer.class);
 
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(IntWritable.class);
@@ -42,7 +42,7 @@ public class UnoDriver extends Configured implements Tool {
 	}
 
 	public static void main(String[] args) throws Exception {
-		UnoDriver driver = new UnoDriver();
+		CardDriver driver = new CardDriver();
 		int exitCode = ToolRunner.run(driver, args);
 		System.exit(exitCode);
 	}
