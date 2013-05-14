@@ -17,13 +17,13 @@ public class CardMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
 		Matcher inputMatch = inputPattern.matcher(inputLine);
 
-		// Use regex to throw out Wilds, Reverses, Draw Twos
+		// Use regex to throw out Jacks, Queens, Kings, Aces and Jokers
 		if (inputMatch.matches()) {
-			// Normalize inconsistent case for card colors
-			String cardColor = inputMatch.group(1).toLowerCase();
+			// Normalize inconsistent case for card suits
+			String cardSuit = inputMatch.group(1).toLowerCase();
 			int cardValue = Integer.parseInt(inputMatch.group(2));
 
-			context.write(new Text(cardColor), new IntWritable(cardValue));
+			context.write(new Text(cardSuit), new IntWritable(cardValue));
 		}
 	}
 }

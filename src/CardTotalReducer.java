@@ -11,7 +11,7 @@ public class CardTotalReducer extends Reducer<Text, IntWritable, Text, IntWritab
 			InterruptedException {
 		int sum = 0;
 
-		// Go through all values to sum up card value for a card color
+		// Go through all values to sum up card values for a card suit
 		for (IntWritable value : values) {
 			sum += value.get();
 		}
