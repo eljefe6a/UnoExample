@@ -1,4 +1,4 @@
-UnoExample
+Playing Card Example
 ==========
 
 Hadoop MapReduce example that uses regular playing cards to explain how mapping and reducing works.
