@@ -1,4 +1,4 @@
-diamonds 3
+DIAMONDS 3
 sPADes Jack
 hearts 3
 hearts 2
